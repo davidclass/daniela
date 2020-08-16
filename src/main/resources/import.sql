@@ -48,7 +48,7 @@ INSERT INTO colaboradores (id, nombre, apellido, documento_id, numero_doc, empre
 INSERT INTO colaboradores (id, nombre, apellido, documento_id, numero_doc, empresa, sctrp_id, sctrs_id, carnets_id, induccion_id)  VALUES(12, 'RAFAEL', 'SUAREZ TORREALBA', 2, '28478463', 'Frozen', 1, 1, 2, 3);
 INSERT INTO colaboradores (id, nombre, apellido, documento_id, numero_doc, empresa, sctrp_id, sctrs_id, carnets_id, induccion_id)  VALUES(13, 'MICHELL', 'SERMEÑO  ESCOBAR', 3, '2374748', 'Frozen', 1, 1, 3, 4);
 INSERT INTO colaboradores (id, nombre, apellido, documento_id, numero_doc, empresa, sctrp_id, sctrs_id, carnets_id, induccion_id)  VALUES(14, 'YEISON', 'BAUTISTA ARCIA', 4, '109318846', 'Frozen', 2, 2, 4, 5);
-INSERT INTO colaboradores (id, nombre, apellido, documento_id, numero_doc, empresa, sctrp_id, sctrs_id, carnets_id, induccion_id)  VALUES(15, 'JUAN', 'BRUCE ALVARADO', 5, '20446299', 'Frozen', 2, 2, 5, 1);
+--INSERT INTO colaboradores (id, nombre, apellido, documento_id, numero_doc, empresa, sctrp_id, sctrs_id, carnets_id, induccion_id)  VALUES(15, 'JUAN', 'BRUCE ALVARADO', 5, '20446299', 'Frozen', 2, 2, 5, 1);
 
 
 
