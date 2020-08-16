@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header" th:text="${titulo}"></div>
+
+        <div class="card-body">
+
+            <!-- Usamos "enctype" para archivos multimedia -->
+            <form th:action="@{/form/colaborador}" th:object="${colaborador}" method="post"
+                  enctype="multipart/form-data">
+
+
+                <!-- NOMBRE -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">NOMBRE</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{nombre}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+                               th:errors="*{nombre}"></small>
+                    </div>
+                </div>
+
+                <!-- APELLIDO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">APELLIDO</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{apellido}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}"
+                               th:errors="*{apellido}"></small>
+                    </div>
+                </div>
+
+                <!-- TIPO DOCUMENTO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">TIPO DOCUMENTO</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select form-control form-control-sm col-md-6" th:field="*{documento_id}">
+                            <option th:each="documento : ${documentos}"
+                                    th:value="${documento.id}"
+                                    th:text="${documento.nombre}"
+                            />
+                        </select>
+                    </div>
+                </div>
+
+                <!-- NUM DOCUCMENTO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">NUM. DOCUMENTO</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{numeroDoc}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroDoc')}"
+                               th:errors="*{numeroDoc}"></small>
+                    </div>
+                </div>
+
+                <!-- EMPRESA -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">EMPRESA</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select form-control form-control-sm col-md-6" th:field="*{empresa}">
+                            <option th:selected="true" th:value="${'HIDROPEZ'}" th:text="${'HIDROPEZ'}"></option>
+                            <option th:selected="true" th:value="${'EFISER'}" th:text="${'EFISER V'}"></option>
+                            <option th:selected="true" th:value="${'FROZEN FISH'}" th:text="${'FROZEN FISH'}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FECHA NACIMIENTO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">FECHA NACIMIENTO</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{fechaNacimiento}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaNacimiento')}"
+                               th:errors="*{fechaNacimiento}"></small>
+                    </div>
+                </div>
+
+                <!-- INDUCCION -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">INDUCCIÓN</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select form-control form-control-sm col-md-6" th:field="*{induccion_id}">
+                            <option th:each="induccion : ${inducciones}"
+                                    th:value="${induccion.id}"
+                                    th:text="${induccion.codigo}"
+                            />
+                        </select>
+                    </div>
+                </div>
+
+                <!-- STCTR-S -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">STCTR-S</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select form-control form-control-sm col-md-6" th:field="*{sctrs_id}">
+                            <option th:each="sctrs : ${listaSctrs}"
+                                    th:value="${sctrs.id}"
+                                    th:text="${sctrs.codigo}"
+                            />
+                        </select>
+                    </div>
+                </div>
+
+                <!-- STCTR-P -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">STCTR-P</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select form-control form-control-sm col-md-6" th:field="*{sctrp_id}">
+                            <option th:each="sctrp : ${listaSctrp}"
+                                    th:value="${sctrp.id}"
+                                    th:text="${sctrp.codigo}"
+                            />
+                        </select>
+                    </div>
+                </div>
+
+                <!-- CARNET-S -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">CARNET-S</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select form-control form-control-sm col-md-6" th:field="*{carnets_id}">
+                            <option th:each="carnets : ${carnetsList}"
+                                    th:value="${carnets.id}"
+                                    th:text="${carnets.codigo}"
+                            />
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FOTO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Foto</label>
+                    <div class="col-sm-6">
+                        <input type="file" name="file" class="form-control"/>
+                    </div>
+                </div>
+
+                <!-- BOTON AGREGAR -->
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <input type="submit" value="GUARDAR EMPLEADO" class="btn btn-primary"/>
+                    </div>
+                </div>
+
+                <!-- Usamos Sessiones: SessionAttributes
+                <input type="hidden" th:field="*{id}"/>
+                -->
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

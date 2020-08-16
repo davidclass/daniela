@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header" th:text="${titulo}"></div>
+        <div class="card-body">
+
+            <!-- Usamos "enctype" para archivos multimedia -->
+            <form th:action="@{/form/sctrs}" th:object="${sctrs}" method="post" enctype="multipart/form-data">
+
+                <!-- CODIGO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">CÓDIGO</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{codigo}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('codigo')}"
+                               th:errors="*{codigo}"></small>
+                    </div>
+                </div>
+                <!-- EMISION -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">FECHA EMISIÓN</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{emision}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('emision')}"
+                               th:errors="*{emision}"></small>
+                    </div>
+                </div>
+
+                <!-- VENCIMIENTO -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">FECHA VENCIMIENTO</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{vencimiento}" class="form-control"
+                               th:errorclass="'form-control alert-danger'"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('vencimiento')}"
+                               th:errors="*{vencimiento}"></small>
+                    </div>
+                </div>
+
+                <!-- BOTON AGREGAR -->
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <input type="submit" value="GUARDAR SCTR" class="btn btn-secondary"/>
+                    </div>
+                </div>
+
+                <!-- Usamos Sessiones: SessionAttributes
+                <input type="hidden" th:field="*{id}"/>
+                -->
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

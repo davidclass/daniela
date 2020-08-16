@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+    <h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}"></h1>
+
+    <p><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/form/colaborador}" class="btn btn-success btn-xs">Crear
+        Empleado</a></p>
+
+    <!-- Filtro de Busqueda -->
+    <p>
+    <form sec:authorize="hasRole('ROLE_USER')" th:action="@{/listar/colaboradores}">
+        <input class="col-md-3 mb-3 " type="text" name="keyword" th:value="${keyword}"/>
+
+        <input class="btn btn-warning" type="submit" value="Search">
+    </form>
+    </p>
+
+    <!-- Tabla responsiva -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse bg-dark text-white">
+            <tr>
+                <th sec:authorize="hasRole('ROLE_USER')">ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>TIPO DOC.</th>
+                <th>NUM. DOC.</th>
+                <th>EMPRESA</th>
+                <th>EDAD</th>
+                <th>INDUCCIÓN</th>
+                <th>SCTR-P</th>
+                <th>SCTR-S</th>
+                <th>CARNET-S</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">EDITAR</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">ELIMINAR</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="colaborador: ${colaboradores}">
+                <!-- Link que te redirecciona al ver el detalle del colaborador -->
+                <td sec:authorize="hasRole('ROLE_USER')"><a class="btn btn-primary btn-xs"
+                                                            th:href="@{/ver/colaborador/} + ${colaborador.id}"
+                                                            th:text="${colaborador.id}"></a></td>
+                <td th:text="${colaborador.nombre}"></td>
+                <td th:text="${colaborador.apellido}"></td>
+                <td th:text="${colaborador.documento_id.nombre}"></td>
+                <td th:text="${colaborador.numeroDoc}"></td>
+                <td th:text="${colaborador.empresa}"></td>
+                <td th:text="${colaborador.edad}"></td>
+                <td class="col-auto" th:text="${colaborador.induccion_id.vencimiento}"></td>
+                <td class="col-auto" th:text="${colaborador.sctrp_id.vencimiento}"></td>
+                <td class="col-auto" th:text="${colaborador.sctrs_id.vencimiento}"></td>
+                <td class="col-auto" th:text="${colaborador.carnets_id.vencimiento}"></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs"
+                                                             th:href="@{/form/colaborador/} + ${colaborador.id}"
+                                                             th:text="'editar'"/></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs"
+                                                             th:href="@{/eliminar/colaborador/} + ${colaborador.id}"
+                                                             th:text="'eliminar'"
+                                                             onclick="return confirm('Estás seguro que quieres eliminar?');"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <nav th:replace="paginator-nav :: paginator"></nav>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

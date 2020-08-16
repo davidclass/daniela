@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <div class="card bg-light">
+
+        <div class="card-header h6" th:if="${#strings.length(colaborador.foto) > 0 }" th:text="${'FOTO'}"></div>
+
+        <div class="card-body bg-dark text-white " th:if="${#strings.length(colaborador.foto) > 0}">
+            <form>
+                <img th:if="${#strings.length(colaborador.foto) > 0}"
+                     class="img-thumbnail rounded float-left" style="max-width: 25%;"
+                     th:src="@{'/uploads/' + ${colaborador.foto}}" th:alt="${colaborador.foto}"/>
+            </form>
+        </div>
+
+
+        <div class="card-header h6" th:text="${titulo}"></div>
+
+        <div class="card-body bg-dark text-white ">
+            <form>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Nombres</label>
+                        <output type="text" class="form-control" th:text="${colaborador.nombre}"/>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Apellidos</label>
+                        <output type="text" class="form-control" th:text="${colaborador.apellido}"/>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-3 mb-3">
+                        <label th:text="${colaborador.documento_id.nombre}"></label>
+                        <output type="text" class="form-control" th:text="${colaborador.numeroDoc}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Fecha Nacimiento</label>
+                        <output type="text" class="form-control" th:text="${colaborador.fechaNacimiento}"/>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Empresa</label>
+                        <output type="text" class="form-control" th:text="${colaborador.empresa}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-header h6" th:text="${'INDUCCIÓN'}"></div>
+
+        <div class="card-body bg-dark text-white ">
+            <form>
+                <!-- SCTR - INDUCCIÓN -->
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Código</label>
+                        <output type="text" class="form-control" th:text="${colaborador.induccion_id.codigo}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Emisión</label>
+                        <output type="text" class="form-control" th:text="${colaborador.induccion_id.emision}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Vencimiento</label>
+                        <output type="text" class="form-control" th:text="${colaborador.induccion_id.vencimiento}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-header h6" th:text="${'SCTR - Salud'}"></div>
+
+        <div class="card-body bg-dark text-white ">
+
+            <form>
+                <!-- SCTR - SALUD -->
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Código</label>
+                        <output type="text" class="form-control" th:text="${colaborador.sctrs_id.codigo}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Emisión</label>
+                        <output type="text" class="form-control" th:text="${colaborador.sctrs_id.emision}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Vencimiento</label>
+                        <output type="text" class="form-control" th:text="${colaborador.sctrs_id.vencimiento}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-header h6" th:text="${'SCTR - Pensión'}"></div>
+
+        <div class="card-body bg-dark text-white ">
+
+            <form>
+                <!-- SCTR - PENSION -->
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Código</label>
+                        <output type="text" class="form-control" th:text="${colaborador.sctrp_id.codigo}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Emisión</label>
+                        <output type="text" class="form-control" th:text="${colaborador.sctrp_id.emision}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Vencimiento</label>
+                        <output type="text" class="form-control" th:text="${colaborador.sctrp_id.vencimiento}"/>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="card-header h6" th:text="${'CARNET - Sanidad'}"></div>
+
+        <div class="card-body bg-dark text-white ">
+
+            <form>
+                <!-- SCTR - CARNET -->
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Código</label>
+                        <output type="text" class="form-control" th:text="${colaborador.carnets_id.codigo}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Emisión</label>
+                        <output type="text" class="form-control" th:text="${colaborador.carnets_id.emision}"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Vencimiento</label>
+                        <output type="text" class="form-control" th:text="${colaborador.carnets_id.vencimiento}"/>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
