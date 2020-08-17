@@ -3,7 +3,10 @@ package com.springboot.app.models.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+/*
 import javax.validation.constraints.NotEmpty;
+ */
+import org.hibernate.validator.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 

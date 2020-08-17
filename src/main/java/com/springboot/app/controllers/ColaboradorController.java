@@ -3,6 +3,10 @@ package com.springboot.app.controllers;
 import com.springboot.app.models.entity.*;
 import com.springboot.app.models.service.*;
 import com.springboot.app.util.paginator.PageRender;
+/*
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+ */
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

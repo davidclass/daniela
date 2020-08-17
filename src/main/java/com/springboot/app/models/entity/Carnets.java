@@ -4,7 +4,10 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+/*
 import javax.validation.constraints.NotEmpty;
+ */
+import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;

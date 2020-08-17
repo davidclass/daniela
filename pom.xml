@@ -8,10 +8,10 @@
 		<version>2.3.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.springboot.sctr.app</groupId>
-	<artifactId>spring-boot-sctr</artifactId>
+	<groupId>com.springboot.jboss.app</groupId>
+	<artifactId>spring-boot-jboss</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-sctr</name>
+	<name>spring-boot-jboss</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -30,6 +30,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Spring Security-->
@@ -87,5 +93,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<packaging>war</packaging>
 
 </project>
