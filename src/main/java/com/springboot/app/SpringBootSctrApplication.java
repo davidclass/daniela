@@ -28,10 +28,10 @@ public class SpringBootSctrApplication implements CommandLineRunner {
 		String password = "12345";
 		for(int i=0; i<5; i++){
 			String bcryptPassword = passwordEncoder.encode(password);
-			System.out.println(bcryptPassword);
+			//System.out.println(bcryptPassword);
 		}
 		password = "060899";
 		String bcryptPassword = passwordEncoder.encode(password);
-		System.out.println(bcryptPassword);
+		//System.out.println(bcryptPassword);
 	}
 }

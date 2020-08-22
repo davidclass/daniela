@@ -4,7 +4,10 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+/*
 import javax.validation.constraints.NotEmpty;
+*/
+import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,7 +28,7 @@ public class Sctrp implements Serializable {
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(name = "sequence_name", value = "SEQ_SCTRP_AUTO_INCR"),
-                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "100"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
                     @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
             }
     )

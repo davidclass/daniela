@@ -25,7 +25,7 @@ public class Documento implements Serializable {
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(name = "sequence_name", value = "SEQ_DOCUMENTO_AUTO_INCR"),
-                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "100"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
                     @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
             }
     )
